@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<db driverName="com.mysql.cj.jdbc.Driver" userName="root" password="admin" url="jdbc:mysql://localhost:3306/security?useSSL=false&amp;serverTimezone=UTC&amp;allowPublicKeyRetrieval=true">
+  <property name="databaseTYPE">MYSQL</property>
+  <property name="dialect">org.hibernate.dialect.MySQLInnoDBDialect</property>
+  <property name="generator">&lt;generator class="native"&gt;&lt;/generator&gt;</property>
+  <property name="driverName">com.mysql.cj.jdbc.Driver</property>
+  <property name="url">jdbc:mysql://[ip]:3306/[db]?useSSL=false&amp;serverTimezone=UTC&amp;allowPublicKeyRetrieval=true&amp;useUnicode=true&amp;characterEncoding=UTF8</property>
+  <table name="dep" comment="" key="id">
+    <column name="id" type="Integer" dbtype="INT" comment="" decimal_digits="0" colums_size="0"/>
+    <column name="name" type="String" dbtype="VARCHAR" comment="" decimal_digits="0" colums_size="0"/>
+    <column name="createUser" type="Integer" dbtype="INT" comment="创造人" decimal_digits="0" colums_size="0"/>
+    <column name="pId" type="Integer" dbtype="INT" comment="" decimal_digits="0" colums_size="0"/>
+  </table>
+  <table name="menu" comment="" key="id">
+    <column name="id" type="Integer" dbtype="INT" comment="" decimal_digits="0" colums_size="0"/>
+    <column name="menuname" type="String" dbtype="VARCHAR" comment="" decimal_digits="0" colums_size="0"/>
+    <column name="url" type="String" dbtype="VARCHAR" comment="" decimal_digits="0" colums_size="0"/>
+    <column name="icon" type="String" dbtype="VARCHAR" comment="" decimal_digits="0" colums_size="0"/>
+    <column name="pid" type="Integer" dbtype="INT" comment="" decimal_digits="0" colums_size="0"/>
+  </table>
+  <table name="region" comment="" key="id">
+    <column name="id" type="Integer" dbtype="INT" comment="" decimal_digits="0" colums_size="0"/>
+    <column name="name" type="String" dbtype="VARCHAR" comment="" decimal_digits="0" colums_size="0"/>
+    <column name="pId" type="Integer" dbtype="INT" comment="" decimal_digits="0" colums_size="0"/>
+    <column name="url" type="String" dbtype="VARCHAR" comment="" decimal_digits="0" colums_size="0"/>
+  </table>
+  <table name="role" comment="" key="id">
+    <column name="id" type="Integer" dbtype="INT" comment="" decimal_digits="0" colums_size="0"/>
+    <column name="name" type="String" dbtype="VARCHAR" comment="" decimal_digits="0" colums_size="0"/>
+  </table>
+  <table name="role_menu" comment="" key="id">
+    <column name="id" type="Integer" dbtype="INT" comment="" decimal_digits="0" colums_size="0"/>
+    <column name="roleId" type="Integer" dbtype="INT" comment="" decimal_digits="0" colums_size="0"/>
+    <column name="menuId" type="Integer" dbtype="INT" comment="" decimal_digits="0" colums_size="0"/>
+  </table>
+  <table name="user" comment="" key="id">
+    <column name="id" type="Integer" dbtype="INT" comment="" decimal_digits="0" colums_size="0"/>
+    <column name="username" type="String" dbtype="VARCHAR" comment="" decimal_digits="0" colums_size="0"/>
+    <column name="password" type="String" dbtype="VARCHAR" comment="" decimal_digits="0" colums_size="0"/>
+    <column name="address" type="String" dbtype="VARCHAR" comment="" decimal_digits="0" colums_size="0"/>
+    <column name="expired" type="Integer" dbtype="INT" comment="" decimal_digits="0" colums_size="0"/>
+    <column name="disabled" type="Integer" dbtype="INT" comment="" decimal_digits="0" colums_size="0"/>
+  </table>
+  <table name="user_role" comment="" key="id">
+    <column name="id" type="Integer" dbtype="INT" comment="" decimal_digits="0" colums_size="0"/>
+    <column name="userId" type="Integer" dbtype="INT" comment="" decimal_digits="0" colums_size="0"/>
+    <column name="roleId" type="Integer" dbtype="INT" comment="" decimal_digits="0" colums_size="0"/>
+  </table>
+</db>

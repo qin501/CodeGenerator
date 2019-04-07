@@ -1,0 +1,34 @@
+package [basePackageXml];
+
+import [basePackageEntity].[Table];
+
+import java.util.List;
+
+public interface [Table]Mapper {
+    /*
+    * 获取所有的数据
+    * */
+    public List<[Table]> getList();
+    /*
+    * 根据id更新
+    * */
+    public void update[Table]([Table] [table]);
+    /*
+    *添加数据
+    * */
+    public void add[Table]([Table] [table]);
+    /*
+    * 根据[key]删除数据
+    * */
+    public void delete[Table]([keyType] [key]);
+    /*
+    * 根据实体类对象查询
+    * */
+    public List<[Table]> searchByEntity([Table] [table]);
+    /*
+    * 根据Id获取
+    * */
+    public [Table] get[Table]ById([keyType] [key]);
+    //精确查询
+    public List<[Table]> queryByEntity([Table] [table]);
+}

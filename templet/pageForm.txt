@@ -1,0 +1,7 @@
+                        <div class="form-group">
+                            <label for="[column]" class="col-sm-3 control-label">[columnComment]</label>
+                            <div class="col-sm-9">
+                                <input type="[textType]" class="form-control" id="[column]" name="[column]" value=""
+                                       placeholder="[columnComment]">
+                            </div>
+                        </div>

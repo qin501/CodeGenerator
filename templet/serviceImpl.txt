@@ -1,0 +1,107 @@
+package [basePackageServiceImpl];
+
+import cn.wsq.common.Result;
+import cn.wsq.common.TableResult;
+import cn.wsq.common.TrimSpace;
+import [basePackageEntity].[Table];
+import [basePackageXml].[Table]Mapper;
+import [basePackageService].[Table]Service;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import java.util.ArrayList;
+import java.util.List;
+@Service
+public class [Table]ServiceImpl implements [Table]Service {
+    @Autowired
+    private [Table]Mapper [table]Mapper;
+
+    /*
+    * offset从第几条开始
+    * limit查询多少条记录
+    * */
+    @Override
+    public TableResult<[Table]> get[Table]List(int offset, int limit) {
+        //int pageNum, int pageSize
+        //offset=(pageNum-1)*limit
+        try {
+            PageHelper.startPage(offset / limit + 1, limit);
+            List<[Table]> [table]List = [table]Mapper.getList();
+            PageInfo pageInfo = new PageInfo([table]List);
+            TableResult<[Table]> result = new TableResult<[Table]>();
+            result.setRows([table]List);
+            result.setTotal((int) pageInfo.getTotal());
+            return result;
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    @Override
+    @Transactional
+    public Result deleteByIds([keyType][] ids) {
+        for (int i = 0; i < ids.length; i++) {
+            [table]Mapper.delete[Table](ids[i]);
+        }
+        return new Result(200,"成功了");
+    }
+
+    @Override
+    @Transactional
+    public Result saveOrUpdate[Table]([Table] [table]) {
+       TrimSpace.trim([table]);
+        if ([table]!=null){
+            //更新
+            if([table].get[Key]()!=null){
+                [table]Mapper.update[Table]([table]);
+            //保存
+            }else {
+                [table]Mapper.add[Table]([table]);
+            }
+        }
+        return new Result(200,"成功了");
+    }
+
+    @Override
+    public [Table] get[Table]ById([keyType] id) {
+        [Table] [table] = [table]Mapper.get[Table]ById(id);
+        return [table];
+    }
+
+    @Override
+    public List<[Table]> searchByEntity([Table] [table]) {
+        TrimSpace.trim([table]);
+        List<[Table]> [table]s = [table]Mapper.searchByEntity([table]);
+        return [table]s;
+    }
+
+    @Override
+    public List<[Table]> getList() {
+        List<[Table]> list = [table]Mapper.getList();
+        return list;
+    }
+    @Override
+    public TableResult<[Table]> getSearchPage(int offset, int limit, [Table] [table]) {
+        TrimSpace.trim([table]);
+        try {
+            PageHelper.startPage(offset / limit + 1, limit);
+            List<[Table]> [table]List=new ArrayList<[Table]>();
+            if([table]==null){
+                [table]List = [table]Mapper.getList();
+            }else{
+                [table]List = [table]Mapper.searchByEntity([table]);
+            }
+            PageInfo pageInfo = new PageInfo([table]List);
+            TableResult<[Table]> result = new TableResult<[Table]>();
+            result.setRows([table]List);
+            result.setTotal((int) pageInfo.getTotal());
+            return result;
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+}

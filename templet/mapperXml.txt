@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="[basePackageMapper]">
+    <!--获取所有的数据-->
+    <select id="getList" resultType="[table]">
+        select * from [table]
+    </select>
+    <!--根据id更新-->
+    <update id="update[Table]" parameterType="[table]">
+        update [table]
+            <set>
+[ifXml.txt]
+            </set>
+            where [key]=#{[key]}
+    </update>
+    <!--添加数据 keyColumn="[key]" keyProperty="[key]" useGeneratedKeys="true"-->
+    <insert id="add[Table]" parameterType="[table]" >
+        insert into [table]
+            <trim prefix="(" suffix=")" suffixOverrides=",">
+[ifXml1.txt]
+            </trim>
+        values
+            <trim prefix="(" suffix=")" suffixOverrides=",">
+[ifXml2.txt]
+            </trim>
+
+    </insert>
+    <!--根据id删除数据-->
+    <delete id="delete[Table]" parameterType="[keyType]">
+          delete from [table] where [key]=#{value}
+    </delete>
+    <!--根据实体类对象查询-->
+    <select id="searchByEntity" parameterType="[table]" resultType="[table]">
+        select * from [table]
+        <where>
+[ifXml3.txt]
+        </where>
+    </select>
+    <!--根据Id获取-->
+    <select id="get[Table]ById" parameterType="[keyType]" resultType="[table]">
+        select * from [table] where [key]=#{value}
+    </select>
+    <!--精确查询-->
+    <select id="queryByEntity" parameterType="[table]" resultType="[table]">
+        select * from [table]
+        <where>
+[ifXml4.txt]
+        </where>
+    </select>
+
+</mapper>

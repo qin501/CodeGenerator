@@ -1,0 +1,40 @@
+package [basePackageService];
+
+import cn.wsq.common.Result;
+import cn.wsq.common.TableResult;
+import [basePackageEntity].[Table];
+
+import java.util.List;
+
+public interface [Table]Service {
+    /*
+    * offset从第几条开始
+    * limit查询多少条记录
+    * */
+    public TableResult<[Table]> get[Table]List(int offset,int limit);
+    /*
+    * 删除Ids集合
+    * */
+    public Result deleteByIds([keyType][] ids);
+    /*
+    * 保存或者是更新
+    * */
+    public Result saveOrUpdate[Table]([Table] [table]);
+    /*
+     * 根据Id获取
+     * */
+    public [Table] get[Table]ById([keyType] id);
+    /*
+     * 根据实体类对象查询
+     * */
+    public List<[Table]> searchByEntity([Table] [table]);
+    /*
+     * 获取所有的数据
+     * */
+    public List<[Table]> getList();
+    /*
+    *分页和条件查询
+    **/
+    public TableResult<[Table]> getSearchPage(int offset, int limit, [Table] [table]);
+
+}
